@@ -18,7 +18,6 @@ public class Generator : MonoBehaviour
     private void Start()
     {
         _generators = GameObject.FindGameObjectsWithTag("Spawner");
-        Debug.Log(_generators.Length);
 
         minimalPointNumber = 0;
         maximalPointNumber = _generators.Length;
