@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Generator : MonoBehaviour
 {
-    [SerializeField] private GameObject _generatedObject;
+    [SerializeField] private GameObject _enemy;
 
     [SerializeField] private GameObject _firstGenerator;
     [SerializeField] private GameObject _secondGenerator;
@@ -56,7 +56,7 @@ public class Generator : MonoBehaviour
 
     private void GenerateEnemy(GameObject gameObject)
     {
-        GameObject enemy = Instantiate(_generatedObject, gameObject.transform.position, Quaternion.identity);
+        GameObject enemy = Instantiate(_enemy, gameObject.transform.position, Quaternion.identity);
         enemy.AddComponent<Move>();
     }
 }
