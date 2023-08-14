@@ -4,59 +4,66 @@ using UnityEngine;
 
 public class Generator : MonoBehaviour
 {
-    [SerializeField] private GameObject _generatedObject;
+    [SerializeField] private Enemy _generatedObject;
 
-    [SerializeField] private GameObject _firstGenerator;
-    [SerializeField] private GameObject _secondGenerator;
-    [SerializeField] private GameObject _thirdGenerator;
+    GameObject[] _generators;
 
     private float _secondCount;
 
+    private int minimalPointNumber;
+    private int maximalPointNumber;
+
+    private bool _isWorking;
+
     private void Start()
     {
+        _generators = GameObject.FindGameObjectsWithTag("Spawner");
+        Debug.Log(_generators.Length);
+
+        minimalPointNumber = 0;
+        maximalPointNumber = _generators.Length;
+
+        _isWorking = true;
+
+        var coroutine = StartCoroutine(Generate(2f));
+
         _secondCount = 0;
     }
 
     private void Update()
     {
         int second = Mathf.FloorToInt(Time.time);
-        int necessarySecondsNumber = 2;
-
-        int firstPointIndex = 1;
-        int secondPointIndex = 2;
-        int thirdPointIndex = 3;
-
-        int minimalPointNumber = 1;
-        int maximalPointNumber = 4;
 
         if (second > _secondCount)
         {
             Debug.Log(second);
             _secondCount++;
+        }
+    }
 
-            if (second % necessarySecondsNumber == 0)
+    private IEnumerator Generate(float secondsNumber)
+    {
+        var wait = new WaitForSeconds(secondsNumber);
+
+        while (_isWorking)
+        {
+            int index = Random.Range(minimalPointNumber, maximalPointNumber);
+
+            for (int i = 0; i < _generators.Length; i++)
             {
-                int index = Random.Range(minimalPointNumber, maximalPointNumber);
-
-                if (index == firstPointIndex)
+                if (i == index)
                 {
-                    GenerateEnemy(_firstGenerator);
-                }
-                else if (index == secondPointIndex)
-                {
-                    GenerateEnemy(_secondGenerator);
-                }
-                else if (index == thirdPointIndex)
-                {
-                    GenerateEnemy(_thirdGenerator);
+                    GenerateEnemy(_generators[i]);
                 }
             }
+
+            yield return wait;
         }
     }
 
     private void GenerateEnemy(GameObject gameObject)
     {
-        GameObject enemy = Instantiate(_generatedObject, gameObject.transform.position, Quaternion.identity);
-        enemy.AddComponent<Move>();
+        var enemy = Instantiate(_generatedObject, gameObject.transform.position, Quaternion.identity);
+        enemy.gameObject.AddComponent<Move>();
     }
 }

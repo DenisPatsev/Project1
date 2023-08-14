@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 241189126}
   m_Layer: 0
   m_Name: Square (3)
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -482,7 +482,7 @@ GameObject:
   - component: {fileID: 260833922}
   m_Layer: 0
   m_Name: Square (2)
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -499,10 +499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7c699cf0fb33844cb25da4c4dbc5f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _generatedObject: {fileID: 7290854163995782993, guid: 72beebce94694a04fb64e4ba9db9ac02, type: 3}
-  _firstGenerator: {fileID: 260833921}
-  _secondGenerator: {fileID: 241189123}
-  _thirdGenerator: {fileID: 305765346}
+  _generatedObject: {fileID: -2655418067973315287, guid: 72beebce94694a04fb64e4ba9db9ac02, type: 3}
 --- !u!212 &260833923
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -584,7 +581,7 @@ GameObject:
   - component: {fileID: 305765349}
   m_Layer: 0
   m_Name: Square (4)
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
